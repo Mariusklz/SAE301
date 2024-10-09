@@ -1,0 +1,33 @@
+{% extends 'led/main.html' %}    
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}Login sécurisé {% endblock %}
+</head>
+
+{% block content %}
+<body>
+    <h1>Login sécurisé</h1>
+    <article class="led">
+        <form id="login-form" method="POST" action="/login">
+            <div class="input-group">
+                <label for="username">Nom d'utilisateur ou e-mail:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button class="valider" type="submit">Se connecter</button>
+            </div>
+            <div id="error-message" style="color: red;"></div>
+        </form>
+    </article>
+</body>
+{% endblock %}
+</html>

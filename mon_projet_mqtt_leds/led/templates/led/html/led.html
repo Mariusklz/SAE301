@@ -1,0 +1,71 @@
+{% extends 'led/main.html' %}  
+
+<!DOCTYPE html>
+<!--     Commande Bouton WEB       --> 
+<!--     Version : CSS et JS v2    --> 
+<!--     fait par Gontier Julien   -->
+   
+<!--     Debut de la page HTML     --> 
+{% block title %}Raspberry PI 3B+{% endblock %}
+    <html>
+    <head>
+<!-- --------------------------------------------------------------------------------------------------------------- --> 
+<!-- --------------------    Entete de la page HTML                                             -------------------- --> 
+<!-- --------------------------------------------------------------------------------------------------------------- --> 
+
+<!-- --------------------    Titre de la page WEB - sur le navigateur                           -------------------- --> 
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+<!-- --------------------------------------------------------------------------------------------------------------- --> 
+<!-- --------------------    Corps de la page HTML :                                            -------------------- -->   
+<!-- --------------------    C'est ce qui sera Afficher dans le navigateur                      -------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------------- --> 
+  {% block content %}
+    <body>
+        <h1 id="titre">Raspberry PI 3 B+  Prise Connectée Intelligente Wifi</h1>
+        <section>
+            <h1> Aujourd'hui nous sommes le : <span id="current-date"></span></h1> <!-- DATE -->
+            <h2>Etat LED 1 : <a1 id="etat-led-1">Éteinte</a1></h2> <!-- Changement ici -->
+            
+            <article class="led">
+                <a href="#" class="btn-on" onclick="turnOnLED(1)">Turn On LED</a>
+                <a href="#" class="btn-off" onclick="turnOffLED(1)">Turn Off LED</a>
+            </article>
+
+            <article class="led">
+                <h2 id="Programmer">Programmer LED 1 :</h2>
+                <form id="schedule-form-led-1">
+                    <label for="date-time-led-1"></label><br>
+                    <input type="datetime-local" id="date-time-led-1" name="date-time-led-1" required>
+                    <button class="valider" type="submit">Programmer</button>
+                </form>
+            </article>		
+
+            <h2 id="title1">Etat LED 2 : <a1 id="etat-led-2">Éteinte</a1></h2> <!-- Changement ici -->
+
+            <article class="led">
+                <a href="#" class="btn-on" onclick="turnOnLED(2)">Turn On LED</a>
+                <a href="#" class="btn-off" onclick="turnOffLED(2)">Turn Off LED</a>
+            </article>
+
+            <article class="led">
+                <h2 id="Programmer">Programmer LED 2 :</h2>
+                <form id="schedule-form-led-2">
+                    <label for="date-time-led-2"></label><br>
+                    <input type="datetime-local" id="date-time-led-2" name="date-time-led-2" required>
+                    <button class="valider" type="submit">Programmer</button>
+                </form>
+            </article>
+
+            <article class="led">
+                <a href="ConfIP_SSID_JS.html">Configuration IP</a>
+            </article>	
+            
+            <h1> Température actuelle : <span id="temperature">Chargement...</span></h1>
+        </section>
+    </body>
+    </html>
+{% endblock %}

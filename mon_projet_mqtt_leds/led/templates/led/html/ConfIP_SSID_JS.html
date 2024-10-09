@@ -1,0 +1,89 @@
+{% extends 'led/main.html' %} 
+
+<!DOCTYPE HTML>
+<!--     Commande Bouton WEB       --> 
+<!--     Version : CSS et JS v2    --> 
+<!--     fait par Gontier Julien   -->
+   
+<!--     Debut de la page HTML     --> 
+<html>
+  <head>
+  <!--     Entete de la page HTML  --> 
+  <!--<form enctype="multipart/form-data" action="ConfIP_SSID.html" method="POST" id="sample" class="sample" accept-charset="UTF-8">-->
+    
+    <!--     Titre de la page WEB - sur le navigateur     -->
+    {% block title %} Prise IP Configuration IP {% endblock %}
+    
+	<link rel="shortcut icon" type="image/png" href="http://eg.com/favicon.ico">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>    
+
+<!--     Page WEB     -->  
+{% block content %}
+<body onload="GetArduinoInputs()">
+<noscript>
+  <div class="noscript">
+  Turn on your damm JavaScript! What is this, 1999?
+  </div>
+</noscript>
+  <h1 id="titre">Prise IP : Configuration IP</h1>
+  <nav><a id="bouton1" href="index.html">Retour</a></nav>
+    <form id="configip" autocomplete="off" accept-charset="utf-8">
+
+      <div style="margin: 0 auto">
+        <div class="left">
+          <label>SSID du WiFi :</label>
+          <label>Password du WiFi :</label>
+          <label>Mode :</label>
+          <div id="cont1">
+            <label>IP :</label>
+            <label>Masque Sous Reseau : </label>
+            <label>Passerelle :</label>
+          </div>
+          <label>Login Site WEB :</label>
+        </div>
+
+        <div class="right">
+          <div>  
+            <input required class="center" type="text" id="ssid" maxlength="40">
+          </div>
+
+          <div>
+            <input required class="center" type="text" id="motPass" maxlength="40">
+          </div>
+
+          <div>
+            <select class="center" id="dhcp" onchange="toggle()">
+                <option value="0">STATIC</option>
+                <option value="1">DHCP</option>
+                  <script type="text/javascript">
+                    //cacher DHCP
+                    function toggle(){var sel=document.getElementById('dhcp');var cont1=document.getElementById('cont1');var cont2=document.getElementById('cont2');if(sel.value==1){cont1.style.display='none';cont2.style.display='none'}else{cont1.style.display='';cont2.style.display=''}}
+                  </script>
+            </select>
+          </div>
+
+          <div id="cont2">
+              <div>
+                <input class="num" type="number" min="0" max="255" id="ip0" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="ip1" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="ip2" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="254" id="ip3" onkeypress="return onlyNumberKey(event)"/>
+              </div>
+
+              <div>
+                <input class="num" type="number" min="0" max="255" id="msr0" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="msr1" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="msr2" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="msr3" onkeypress="return onlyNumberKey(event)"/>
+              </div>
+
+              <div>
+                <input class="num" type="number" min="0" max="255" id="gat0" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="gat1" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="255" id="gat2" onkeypress="return onlyNumberKey(event)"/><h3>.</h3>
+                <input class="num" type="number" min="0" max="254" id="gat3" onkeypress="return onlyNumberKey(event)"/>
+              </div>
+          </div>
+{% endblock %}
